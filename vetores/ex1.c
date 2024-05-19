@@ -1,27 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Ler um vetor de 10 posições. Imprimir quantas notas tem um valor igual ou acima da média.
+//- Leia para a variável TAM o tamanho do vetor
+//- Declare um vetor de inteiros com TAM elementos.
+//- Inicialize o vetor com os números de 1 a 10.
+//- Utilize um laço para imprimir todos os elementos do vetor.
 int main(){
-    const int tam=10;
+    int tam;
+    printf("Digite o tamanho do vetor:\n");
+    scanf("%i", &tam);
     int vetor[tam];
-    int soma =0, nr=0;
-    float media;
-    for (int i =0; i<tam; i++){
-        printf("Digite a %i posicao:\n", i);
-        scanf("%i", &vetor[i]);
-    
+    for(int i =0; i<tam; i++){
+        vetor[i]= i+1;
+    }
     for(int i=0; i<tam; i++){
-        soma=soma+vetor[i];
-
-    }
-    media= (float)soma/tam;
-    for(int i=0;i<tam; i++){
-        if(vetor[i]> media){
-            nr++;
-        }
-    }
-    printf("Nota %i: %i\n", i, vetor[i]);
+        printf("%2i\n", vetor[i]);
     }
     return 0;
 }
