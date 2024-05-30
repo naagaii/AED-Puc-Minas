@@ -126,8 +126,7 @@ int separaPrimos() {
     }
 
     while (fscanf(arquivo, "%d", &numero) != EOF) {
-        // Verifica se o número é primo
-        primo = 1; // Assume que o número é primo inicialmente
+        primo = 1; 
         if (numero <= 1) {
             primo = 0; // Números menores ou iguais a 1 não são primos
         } else {
@@ -144,7 +143,6 @@ int separaPrimos() {
         }
     }
 
-    // Fecha os arquivos
     fclose(arquivo);
     fclose(arquivoPrimos);
 
@@ -154,7 +152,61 @@ int separaPrimos() {
 }
 
 int posicaoFibonacci() {
-    // Implementacao para encontrar a posicao de um numero na serie Fibonacci
-    printf("Funcao posicaoFibonacci ainda nao implementada.\n");
-    return 0;
+    FILE *arquivo, *arquivoNumeros, *arquivoResultados;
+    int numeros, posicao=0, encontrado=0, anterior, posterior;
+
+    if ((arquivo = fopen("arquivo.txt", "r")) == NULL) {
+        printf("Erro ao abrir o arquivo da série!\n");
+        return;
+    }
+
+     if ((arquivoNumeros = fopen("numeros.txt", "r")) == NULL) {
+        printf("Erro ao abrir o arquivo com os valores!\n");
+        fclose(arquivoNumeros);
+        return;
+    }
+
+    if ((arquivoResultados = fopen("resultados.txt", "w")) == NULL) {
+        printf("Erro ao abrir o arquivo para gravar os resultados!\n");
+        fclose(arquivo);
+        fclose(arquivoNumeros);
+        return;
+    }
+
+    while (fscanf(arquivoNumeros, "%d", &numeros) != EOF) {
+        // Reinicia a posição no arquivo da série
+        posicao = 0;
+        encontrado = 0;
+
+        // Verifica se o valor está presente na série
+        while (fscanf(arquivo, "%d", &anterior) != EOF) {
+            posicao++;
+            if (numeros == anterior) {
+                encontrado = 1;
+                fprintf(arquivoResultados, "O valor %d está no arquivo na posição %d.\n", numeros, posicao);
+                break;
+            } else if (numeros < anterior) {
+                posterior = anterior;
+                break;
+            } else {
+                posterior = anterior;
+            }
+        }
+
+        // Se o valor não foi encontrado na série
+        if (!encontrado) {
+            fprintf(arquivoResultados, "O valor %d não está no arquivo. Valores mais próximos: %d e %d.\n", numeros, anterior, posterior);
+        }
+
+        // Retorna ao início do arquivo da série para a próxima verificação
+        rewind(arquivo);
+    }
+
+    // Fecha os arquivos
+    fclose(arquivo);
+    fclose(arquivoNumeros);
+    fclose(arquivoResultados);
+
+    printf("Resultados gravados no arquivo resultados.txt com sucesso!\n");
 }
+

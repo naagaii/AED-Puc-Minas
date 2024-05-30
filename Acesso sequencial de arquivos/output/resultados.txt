@@ -1,0 +1,11 @@
+O valor 1 está no arquivo na posição 2.
+O valor 4 não está no arquivo. Valores mais próximos: 5 e 5.
+O valor 7 não está no arquivo. Valores mais próximos: 8 e 8.
+O valor 11 não está no arquivo. Valores mais próximos: 13 e 13.
+O valor 12 não está no arquivo. Valores mais próximos: 13 e 13.
+O valor 13 está no arquivo na posição 8.
+O valor 30 não está no arquivo. Valores mais próximos: 34 e 34.
+O valor 45 não está no arquivo. Valores mais próximos: 55 e 55.
+O valor 67 não está no arquivo. Valores mais próximos: 89 e 89.
+O valor 89 está no arquivo na posição 12.
+O valor 90 não está no arquivo. Valores mais próximos: 144 e 144.
